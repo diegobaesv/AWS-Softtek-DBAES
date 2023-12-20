@@ -1,0 +1,67 @@
+service: aws-softtek-dbaes
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: sa-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "*"
+      Resource:
+        -  arn:aws:dynamodb:sa-east-1:361586694796:table/UsersTable
+        
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: UsersTable
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+
+
+
+functions:
+  api:
+    handler: built/index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+  listarPeliculas:
+    handler: built/lambdas/swapi/peliculas/listar-peliculas/listar-peliculas.listarPeliculas
+    events:
+      - httpApi:
+          path: /swapi/peliculas
+          method: get
+
+  obtenerPelicula:
+    handler: built/lambdas/swapi/peliculas/obtener-pelicula/obtener-pelicula.obtenerPelicula
+    events:
+      - httpApi:
+          path: /swapi/peliculas/{id}
+          method: get
+
+  listarUsuarios:
+    handler: built/lambdas/dynamo/usuarios/listar-usuarios/listar-usuarios.listarUsuarios
+    events:
+      - httpApi:
+          path: /dynamo/usuarios
+          method: get
+
+  crearUsuario:
+    handler: built/lambdas/dynamo/usuarios/crear-usuario/crear-usuario.crearUsuario
+    events:
+      - httpApi:
+          path: /dynamo/usuarios
+          method: post
+
