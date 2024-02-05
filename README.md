@@ -68,16 +68,16 @@ npm run deploy
 ## Endpoints
 
 Listar Peliculas
-- GET - https://qs30cvdtig.execute-api.sa-east-1.amazonaws.com/swapi/peliculas
+- GET - https://w2qqtaky8i.execute-api.us-east-1.amazonaws.com/swapi/peliculas
 
 Obtener Pelicula
-- GET - https://qs30cvdtig.execute-api.sa-east-1.amazonaws.com/swapi/peliculas/{id}
+- GET - https://w2qqtaky8i.execute-api.us-east-1.amazonaws.com/swapi/peliculas/{id}
 
 Listar Usuarios
-- GET - https://qs30cvdtig.execute-api.sa-east-1.amazonaws.com/dynamo/usuarios
+- GET - https://w2qqtaky8i.execute-api.us-east-1.amazonaws.com/dynamo/usuarios
 
 Crear Usuario
-- POST - https://qs30cvdtig.execute-api.sa-east-1.amazonaws.com/dynamo/usuarios
+- POST - https://w2qqtaky8i.execute-api.us-east-1.amazonaws.com/dynamo/usuarios
 
 ## Postman
 
