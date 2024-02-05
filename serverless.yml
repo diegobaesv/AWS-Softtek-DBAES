@@ -39,28 +39,28 @@ functions:
           method: get
 
   listarPeliculas:
-    handler: built/lambdas/swapi/peliculas/listar-peliculas/listar-peliculas.listarPeliculas
+    handler: built/application/handlers/lambda/peliculaHandler.listarPeliculas
     events:
       - httpApi:
           path: /swapi/peliculas
           method: get
 
   obtenerPelicula:
-    handler: built/lambdas/swapi/peliculas/obtener-pelicula/obtener-pelicula.obtenerPelicula
+    handler: built/application/handlers/lambda/peliculaHandler.obtenerPelicula
     events:
       - httpApi:
           path: /swapi/peliculas/{id}
           method: get
 
   listarUsuarios:
-    handler: built/lambdas/dynamo/usuarios/listar-usuarios/listar-usuarios.listarUsuarios
+    handler:  built/application/handlers/lambda/usuarioHandler.listarUsuarios
     events:
       - httpApi:
           path: /dynamo/usuarios
           method: get
 
   crearUsuario:
-    handler: built/lambdas/dynamo/usuarios/crear-usuario/crear-usuario.crearUsuario
+    handler: built/application/handlers/lambda/usuarioHandler.crearUsuario
     events:
       - httpApi:
           path: /dynamo/usuarios
