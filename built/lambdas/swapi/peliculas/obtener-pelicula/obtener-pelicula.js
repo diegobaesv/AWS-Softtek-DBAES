@@ -11,23 +11,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.obtenerPelicula = void 0;
 const swapi_1 = require("../../../../api/swapi");
+const translate_util_1 = require("../../../../utils/translate.util");
 const obtenerPelicula = (event) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
         const id = (_a = event.pathParameters) === null || _a === void 0 ? void 0 : _a.id;
         const respuesta = yield swapi_1.default.get(`/films/${id}`);
         const _pel = respuesta.data;
-        const pelicula = {
-            titulo: _pel.title,
-            id_episodio: _pel.episode_id,
-            texto_apertura: _pel.opening_crawl,
-            director: _pel.director,
-            productor: _pel.producer,
-            fecha_lanzamiento: _pel.release_date
-        };
+        const peliculaTraducida = (0, translate_util_1.traducirObjeto)(_pel);
         return {
             statusCode: respuesta.status,
-            body: JSON.stringify(pelicula)
+            body: JSON.stringify(peliculaTraducida)
         };
     }
     catch (err) {

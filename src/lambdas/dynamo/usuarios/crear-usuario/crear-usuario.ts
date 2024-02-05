@@ -21,7 +21,7 @@ export const crearUsuario = async (event: APIGatewayProxyEvent): Promise<APIGate
         }
 
         await dynamodb.put({
-            TableName: 'UsersTable',
+            TableName: 'UsersTable2',
             Item: usuario
         }).promise();
 

@@ -15,7 +15,7 @@ const listarUsuarios = (event) => __awaiter(void 0, void 0, void 0, function* ()
         const AWS = require('aws-sdk');
         const dynamodb = new AWS.DynamoDB.DocumentClient();
         const respuesta = yield dynamodb.scan({
-            TableName: 'UsersTable',
+            TableName: 'UsersTable2',
         }).promise();
         return {
             statusCode: 200,

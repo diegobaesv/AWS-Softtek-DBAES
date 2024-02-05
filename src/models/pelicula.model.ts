@@ -5,4 +5,12 @@ export interface Pelicula {
     director: string;
     productor: string;
     fecha_lanzamiento: string;
+    characters: any,
+    planets: any,
+    starships:any,
+    vehicles:any,
+    species:any,
+    created:string,
+    edited:string,
+    url:string
 }

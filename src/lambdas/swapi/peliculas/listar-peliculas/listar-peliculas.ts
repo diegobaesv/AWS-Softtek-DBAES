@@ -2,20 +2,16 @@ import { error } from "console";
 import swapi from "../../../../api/swapi";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { Pelicula } from "../../../../models/pelicula.model";
+import { traducirObjeto } from "../../../../utils/translate.util";
 
 
 
 export const listarPeliculas = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {
         const respuesta = await swapi.get('/films');
-        const peliculas: Pelicula[] = respuesta.data.results.map((pelicula: any) => ({
-            titulo: pelicula.title,
-            id_episodio: pelicula.episode_id,
-            texto_apertura: pelicula.opening_crawl,
-            director: pelicula.director,
-            productor: pelicula.producer,
-            fecha_lanzamiento: pelicula.release_date
-        }));
+        const peliculas: Pelicula[] = respuesta.data.results.map((pelicula: any) => {
+            return traducirObjeto(pelicula)
+        });
 
         return  {
             statusCode: respuesta.status,

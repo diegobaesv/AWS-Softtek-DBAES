@@ -6,7 +6,7 @@ export const listarUsuarios = async (event: APIGatewayProxyEvent): Promise<APIGa
         const AWS = require('aws-sdk');
         const dynamodb = new AWS.DynamoDB.DocumentClient()
         const respuesta = await dynamodb.scan({
-            TableName: 'UsersTable',
+            TableName: 'UsersTable2',
         }).promise();
 
         return  {

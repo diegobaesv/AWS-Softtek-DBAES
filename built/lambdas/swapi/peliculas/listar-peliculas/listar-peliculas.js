@@ -11,17 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.listarPeliculas = void 0;
 const swapi_1 = require("../../../../api/swapi");
+const translate_util_1 = require("../../../../utils/translate.util");
 const listarPeliculas = (event) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const respuesta = yield swapi_1.default.get('/films');
-        const peliculas = respuesta.data.results.map((pelicula) => ({
-            titulo: pelicula.title,
-            id_episodio: pelicula.episode_id,
-            texto_apertura: pelicula.opening_crawl,
-            director: pelicula.director,
-            productor: pelicula.producer,
-            fecha_lanzamiento: pelicula.release_date
-        }));
+        const peliculas = respuesta.data.results.map((pelicula) => {
+            return (0, translate_util_1.traducirObjeto)(pelicula);
+        });
         return {
             statusCode: respuesta.status,
             body: JSON.stringify(peliculas)

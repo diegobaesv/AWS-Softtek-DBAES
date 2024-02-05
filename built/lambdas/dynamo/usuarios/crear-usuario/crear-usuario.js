@@ -25,7 +25,7 @@ const crearUsuario = (event) => __awaiter(void 0, void 0, void 0, function* () {
             documentoIdentidad
         };
         yield dynamodb.put({
-            TableName: 'UsersTable',
+            TableName: 'UsersTable2',
             Item: usuario
         }).promise();
         return {
