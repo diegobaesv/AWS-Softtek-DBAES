@@ -10,7 +10,7 @@ authorName: 'Serverless, inc.'
 authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 -->
 
-# AWS Softtek DBAES (Lambdas, Dynamo)
+# AWS Rimac DBAES (Lambdas, Dynamo)
 
 Este proyecto fue realizado con la finalidad de demostrar el consumo de SWAPI y Dynamodb usando Serverless Framework
 
